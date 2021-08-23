@@ -39,7 +39,6 @@ class Snake:
         elif self.direcao == "baixo":
             self.corpo.insert(0, (x, y + self.movimento))
 
-
         self.corpo.pop(-1)
 
     def cima(self):
@@ -66,14 +65,17 @@ class Snake:
         self.pontos += 1
         self.velocidade += 1.5
         self.nv = int(self.pontos / 5) + 1
-        pygame.display.set_caption("----------Snake | Pontos: {} | NV: {}----------".format(self.pontos, self.nv))
+        pygame.display.set_caption("----------Snake | Pontos: {} | NV: "
+                                   "{}----------".format(self.pontos, self.nv))
 
     def colisao(self):
         cabeca = self.corpo[0]
         x = cabeca[0]
         y = cabeca[1]
         calda = self.corpo[1:]
-        return x < 0 or y < 0 or x > 490 or y > 490 or cabeca in calda or len(self.corpo) > self.tamanho_maximo
+        return x < 0 or y < 0 or x > 490 or y > 490 or cabeca in calda \
+               or len(self.corpo) > self.tamanho_maximo
+
 
 class Fruta:
     cor = (255, 0, 0)
@@ -141,7 +143,6 @@ if __name__ == "__main__":
             cobrinha = Snake()
             frutinha = Fruta(cobrinha)
 
-
         cobrinha.andar()
 
         screen.fill(preto)
@@ -149,6 +150,3 @@ if __name__ == "__main__":
         cobrinha.blit(screen)
 
         pygame.display.update()
-
-
-
